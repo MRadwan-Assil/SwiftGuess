@@ -6,3 +6,4 @@ dist/
 .database.db
 database.db
 *.db
+.DS_Store
