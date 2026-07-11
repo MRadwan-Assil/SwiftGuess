@@ -1,9 +1,15 @@
+import 'dotenv/config';
 import { v5 as uuidv5 } from "uuid";
+import { NAMESPACEIsNotDefined } from "./exceptions";
 
 export default class UUID {
-    private static readonly NAMESPACE = '6b86b273-ed34-477a-9967-64b63945476c';
+    private static readonly NAMESPACE: string = process.env.NAMESPACE ?? "";
 
     public static getTokenIDForPlayer(username: string, tag: string): string {
+        if (!this.NAMESPACE) {
+            throw new NAMESPACEIsNotDefined();
+        }
+
         return uuidv5(username + tag, this.NAMESPACE);
     }
 }

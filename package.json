@@ -12,6 +12,7 @@
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "socket.io": "^4.8.3",
     "sqlite": "^5.1.1",
@@ -20,7 +21,7 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/node": "^26.0.1",
+    "@types/node": "^26.1.1",
     "@types/sqlite3": "^3.1.11",
     "@types/uuid": "^10.0.0",
     "ts-node": "^10.9.2",

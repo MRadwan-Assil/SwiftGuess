@@ -55,3 +55,9 @@ export class ErrorAddingNewRowToTable extends Error {
         super(`Error while adding new row to table "${tableName}"`);
     }
 }
+
+export class NAMESPACEIsNotDefined extends Error {
+    public constructor() {
+        super(`Environment variable NAMESPACE is not defined`);
+    }
+}

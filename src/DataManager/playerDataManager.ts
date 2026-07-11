@@ -1,6 +1,6 @@
 import { PlayerAlreadyExists } from "../exceptions";
-import UUID from "../guid";
-import SQLManager from "./sqlManager";
+import UUID from "../guid.js";
+import SQLManager from "./sqlManager.js";
 
 export type Player = {
     username: string;

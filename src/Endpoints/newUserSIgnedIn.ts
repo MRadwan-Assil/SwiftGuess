@@ -42,10 +42,10 @@ export default class NewUserSignedIn implements Endpoint {
             throw new Exception.UsernameAndTagRequired();
         }
 
-
         this.validate(username, tag);
 
         const tokenID = UUID.getTokenIDForPlayer(username, tag);
+
 
         if (await DatabaseManager.playersDataManager.isPlayerExists(tokenID)) {
             throw new Exception.PlayerAlreadyExists(username, tag);
@@ -83,7 +83,7 @@ export default class NewUserSignedIn implements Endpoint {
             }
 
             apiResponse.status_code = 500;
-            apiResponse.message = "Internal server error."
+            apiResponse.message = JSON.stringify(error);
         } finally {
             response
                 .status(apiResponse.status_code)

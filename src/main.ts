@@ -3,11 +3,14 @@ import ExpressManager from "./expressManager";
 import SocketIOManager from "./socketIOManager";
 import NewUserSignedIn from "./Endpoints/newUserSIgnedIn";
 import DatabaseManager from "./DataManager/databaseManager";
+import * as dotenv from "dotenv";
 
 async function main(): Promise<void> {
-    const port: number = 8081;
+    const port: number = process.env.PORT ? parseInt(process.env.PORT) : 8081;
     const expressManager: ExpressManager = new ExpressManager(port);
     const socketIOManager: SocketIOManager = new SocketIOManager(expressManager.getApp());
+
+    dotenv.config();
 
     await DatabaseManager.connectToDatabase();
     await DatabaseManager.initialize();
