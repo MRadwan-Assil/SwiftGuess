@@ -3,4 +3,4 @@ node_modules/
 dist/
 .idea
 .vscode/
-.database.db
+database.db
