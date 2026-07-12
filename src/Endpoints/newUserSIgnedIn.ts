@@ -54,6 +54,9 @@ export default class NewUserSignedIn implements Endpoint {
         await DatabaseManager.playersDataManager.addNewPlayer(username, tag);
 
         data.token_id = tokenID;
+
+        console.log(`New player added: ${username}#${tag} with token ID: ${tokenID}`);
+
         return data;
     }
 
