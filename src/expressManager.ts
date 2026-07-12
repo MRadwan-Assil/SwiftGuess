@@ -1,6 +1,7 @@
 import express, { Express, Request, Response, NextFunction } from "express";
 import Endpoint from "./Endpoints/endpoint";
 import * as Exception from "./exceptions";
+import cors, { CorsOptions } from 'cors';
 
 export default class ExpressManager {
     private app: Express;
@@ -13,7 +14,17 @@ export default class ExpressManager {
     public constructor(port: number) {
         this.app = express();
         this.port = port;
+        this.activateCORS();
         this.app.use(express.json());
+    }
+
+    private activateCORS() {
+        const corsOptions: CorsOptions = {
+            origin: '*', // Herkese izin verir
+            methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+            allowedHeaders: ['Content-Type', 'Authorization']
+        };
+        this.app.use(cors(corsOptions));
     }
 
     public addEndpoint(endpoint: Endpoint) {
